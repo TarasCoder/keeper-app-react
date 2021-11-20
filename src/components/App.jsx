@@ -1,28 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
+
+const [arr, changeArr] = useState([]);
+
+function addNote(note){
+  changeArr(prev=>{
+    return [...prev,note]
+  });
+}
+
   return (
     <div>
       <Header />
-      <CreateArea />
-      <Note key={1} title="Note title" content="Note content" />
+      <CreateArea addNote={addNote}/>
+      {arr.map(item=><Note title={item.title} content={item.content} />)}
       <Footer />
     </div>
   );
 }
 
 export default App;
-
-//CHALLENGE:
-//1. Implement the add note functionality.
-//- Create a constant that keeps track of the title and content.
-//- Pass the new note back to the App.
-//- Add new note to an array.
-//- Take array and render seperate Note components for each item.
 
 //2. Implement the delete note functionality.
 //- Callback from the Note component to trigger a delete function.
