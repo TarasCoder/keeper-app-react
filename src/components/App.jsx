@@ -13,11 +13,11 @@ function App() {
     });
   }
   function deleteBtn(id) {
-    changeArr(prev => {
-      return prev.filter((item, index)=>{
-        return index !== id
-      })
-    })
+    changeArr((prev) => {
+      return prev.filter((item, index) => {
+        return index !== id;
+      });
+    });
   }
 
   return (
